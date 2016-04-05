@@ -1,6 +1,7 @@
 package mathbeta
 
 import (
+	"errors"
 	"fmt"
 	"math/rand"
 	"strconv"
@@ -124,9 +125,9 @@ func (m *Matrix) String() string {
 	return s
 }
 
-func (m *Matrix) Add(a *Matrix) *Matrix {
+func (m *Matrix) Add(a *Matrix) (*Matrix, error) {
 	if m.Row != a.Row || m.Column != a.Column {
-		panic("dimensions not consistent!")
+		return nil, errors.New("dimensions not consistent!")
 	}
 	d := make([][]float64, m.Row)
 	for i := 0; i < m.Row; i++ {
@@ -137,12 +138,12 @@ func (m *Matrix) Add(a *Matrix) *Matrix {
 			d[i][j] = a.Data[i][j] + m.Data[i][j]
 		}
 	}
-	return &Matrix{Row: m.Row, Column: m.Column, Data: d}
+	return &Matrix{Row: m.Row, Column: m.Column, Data: d}, nil
 }
 
-func (m *Matrix) Subtract(a *Matrix) *Matrix {
+func (m *Matrix) Subtract(a *Matrix) (*Matrix, error) {
 	if m.Row != a.Row || m.Column != a.Column {
-		panic("dimensions not consistent!")
+		return nil, errors.New("dimensions not consistent!")
 	}
 	d := make([][]float64, m.Row)
 	for i := 0; i < m.Row; i++ {
@@ -153,12 +154,12 @@ func (m *Matrix) Subtract(a *Matrix) *Matrix {
 			d[i][j] = m.Data[i][j] - a.Data[i][j]
 		}
 	}
-	return &Matrix{Row: m.Row, Column: m.Column, Data: d}
+	return &Matrix{Row: m.Row, Column: m.Column, Data: d}, nil
 }
 
-func (m *Matrix) Multiply(a *Matrix) *Matrix {
+func (m *Matrix) Multiply(a *Matrix) (*Matrix, error) {
 	if m.Column != a.Row {
-		panic("dimensions not consistent!")
+		return nil, errors.New("dimensions not consistent!")
 	}
 	d := make([][]float64, m.Row)
 	for i := 0; i < m.Row; i++ {
@@ -172,7 +173,7 @@ func (m *Matrix) Multiply(a *Matrix) *Matrix {
 			}
 		}
 	}
-	return &Matrix{Row: m.Row, Column: a.Column, Data: d}
+	return &Matrix{Row: m.Row, Column: a.Column, Data: d}, nil
 }
 
 // get the transpose of the current matrix
@@ -271,12 +272,12 @@ func (m *Matrix) Rank() int {
 }
 
 // get the determinant of the matrix, using row transformation method
-func (m *Matrix) Determinant() float64 {
+func (m *Matrix) Determinant() (float64, error) {
 	if m.Column != m.Row {
-		panic("matrix with different row count and column count has no determinant")
+		return 0, errors.New("matrix with different row count and column count has no determinant")
 	}
 	if m.Row == 1 {
-		return m.Data[0][0]
+		return m.Data[0][0], nil
 	}
 	mm := m.Copy()
 	for i := 0; i < mm.Row; {
@@ -298,7 +299,7 @@ func (m *Matrix) Determinant() float64 {
 			// the current column and rows after that are all with zero head
 			// go on to the next column
 			if j >= mm.Row {
-				return 0
+				return 0, nil
 			}
 		}
 		p := pivot[i]
@@ -316,13 +317,13 @@ func (m *Matrix) Determinant() float64 {
 	for i := 0; i < mm.Row; i++ {
 		d *= mm.Data[i][i]
 	}
-	return d
+	return d, nil
 }
 
 // inverse of the matrix, using the row transformation method
-func (m *Matrix) Inverse() *Matrix {
+func (m *Matrix) Inverse() (*Matrix, error) {
 	if m.Row != m.Column {
-		panic("matrix with different row count and column count has no inversion")
+		return nil, errors.New("matrix with different row count and column count has no inversion")
 	}
 	eye := Eye(m.Row)
 	mm := m.Copy()
@@ -344,7 +345,7 @@ func (m *Matrix) Inverse() *Matrix {
 			}
 			// matrix determinant is 0, so has no inversion
 			if j >= mm.Row {
-				panic("matrix with with determinant 0 has no inversion")
+				return nil, errors.New("matrix with determinant 0 has no inversion")
 			}
 		}
 		p := mm.Data[i][i]
@@ -379,5 +380,5 @@ func (m *Matrix) Inverse() *Matrix {
 		}
 	}
 
-	return eye
+	return eye, nil
 }

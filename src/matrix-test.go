@@ -16,12 +16,28 @@ func main() {
 	//	m := mathbeta.RandMatrix(3, 3)
 	fmt.Println("matrix:")
 	m.Print()
-	fmt.Println("matrix determinant:", m.Determinant())
-	inverse := m.Inverse()
-	inverse.Print()
+	d, err := m.Determinant()
+	if err == nil {
+		fmt.Println("matrix determinant:", d)
+	} else {
+		fmt.Println(err)
+	}
 
-	m.Multiply(inverse).Print()
-	inverse.Multiply(m).Print()
+	inverse, err := m.Inverse()
+	if err == nil {
+		inverse.Print()
+		multiplication, err := m.Multiply(inverse)
+		if err == nil {
+			multiplication.Print()
+		}
+
+		multiplication, err = inverse.Multiply(m)
+		if err == nil {
+			multiplication.Print()
+		}
+	} else {
+		fmt.Println(err)
+	}
 
 	//	mathbeta.Ones(3, 2).Print()
 	//	m.Transpose().Print()
