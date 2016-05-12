@@ -1,0 +1,33 @@
+C:/Go/go/bin/go.exe run cigol-crawler.go [D:/workspace/go-tutorial/go-crawler/src/cigol]
+crawling http://tech.sina.com.cn/
+crawled http://tech.sina.com.cn/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/#/
+crawled http://tech.sina.com.cn/#/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/","_version":2,"_shards":{"total":2,"successful":1,"failed":0},"created":false}
+crawling http://tech.sina.com.cn/guide/
+crawled http://tech.sina.com.cn/guide/ charset= gb2312
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/guide/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/top/day_hotnews.shtml
+crawled http://tech.sina.com.cn/top/day_hotnews.shtml charset= gb2312
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/top/day_hotnews.shtml","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/internet/
+crawled http://tech.sina.com.cn/internet/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/internet/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/zl/
+crawled http://tech.sina.com.cn/zl/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/zl/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/tele/
+crawled http://tech.sina.com.cn/tele/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/tele/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/t/4g/
+crawled http://tech.sina.com.cn/t/4g/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/t/4g/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/it/
+crawled http://tech.sina.com.cn/it/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/it/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/discovery/
+crawled http://tech.sina.com.cn/discovery/ charset= utf-8
+{"_index":"cigol_http%3a%2f%2ftech.sina.com.cn%2f","_type":"pages","_id":"http://tech.sina.com.cn/discovery/","_version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
+crawling http://tech.sina.com.cn/photo/
+错误: 进程崩溃或运行终止.
