@@ -1,12 +1,11 @@
-package main
+package mathbeta
 
 import (
 	"fmt"
 	"log"
-	"mathbeta"
 )
 
-func main() {
+func TestMatrix() {
 	defer func() {
 		if r := recover(); r != nil {
 			log.Printf("Runtime error caught: %v", r)
