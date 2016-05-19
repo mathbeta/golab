@@ -3,22 +3,24 @@ package mathbeta
 import (
 	"fmt"
 	"log"
+	"testing"
 )
 
-func TestMatrix() {
+func TestMatrix(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			log.Printf("Runtime error caught: %v", r)
 		}
 	}()
-	m := mathbeta.NewMatrix(3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-	//	m := mathbeta.RandMatrix(3, 3)
+	m := NewMatrix(3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+	//	m := RandMatrix(3, 3)
 	fmt.Println("matrix:")
 	m.Print()
 	d, err := m.Determinant()
 	if err == nil {
 		fmt.Println("matrix determinant:", d)
 	} else {
+		t.Error("matrix has no determinant")
 		fmt.Println(err)
 	}
 
@@ -35,6 +37,7 @@ func TestMatrix() {
 			multiplication.Print()
 		}
 	} else {
+		t.Log("matrix has no inversion")
 		fmt.Println(err)
 	}
 
