@@ -19,10 +19,10 @@ func TestAll(t *testing.T) {
 	c := bf.Contains("ghi")
 	fmt.Println(c)
 	if !c {
-		t.Error("false negative")
+		t.Error("false negative, 'ghi' has already been added")
 	}
 	c = bf.Contains("jkl")
 	if c {
-		t.Error("false positive")
+		t.Error("false positive, 'jkl' has not been added")
 	}
 }

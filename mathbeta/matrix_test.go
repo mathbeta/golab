@@ -20,12 +20,14 @@ func TestMatrix(t *testing.T) {
 	if err == nil {
 		fmt.Println("matrix determinant:", d)
 	} else {
-		t.Error("matrix has no determinant")
+		t.Error("matrix should has a determinant")
 		fmt.Println(err)
 	}
 
 	inverse, err := m.Inverse()
 	if err == nil {
+		t.Log("matrix should has no inversion")
+
 		inverse.Print()
 		multiplication, err := m.Multiply(inverse)
 		if err == nil {
@@ -37,7 +39,6 @@ func TestMatrix(t *testing.T) {
 			multiplication.Print()
 		}
 	} else {
-		t.Log("matrix has no inversion")
 		fmt.Println(err)
 	}
 
